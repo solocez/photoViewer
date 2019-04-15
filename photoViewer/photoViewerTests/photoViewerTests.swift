@@ -1,15 +1,12 @@
 //
 //  photoViewerTests.swift
-//  photoViewerTests
-//
-//  Created by Zakhar Sukhanov on 2019-04-15.
-//  Copyright © 2019 solocez. All rights reserved.
-//
+
 
 import XCTest
 @testable import photoViewer
 
-class photoViewerTests: XCTestCase {
+extension photoViewerTests: AppManagersConsumer { }
+class photoViewerTests: PhotoViewerXCTestCaseBase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,16 +16,46 @@ class photoViewerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    func testAuthToken() {
+//        let exp = expectation(description: "token")
+//
+//        appManagers.rest.auth().subscribe(onSuccess: { (token) in
+//            defer { exp.fulfill() }
+//            XCTAssert(!token.isEmpty)
+//            Log.debug("TOKEN: \(token)")
+//        }) { (err) in
+//            defer { exp.fulfill() }
+//            Log.error("\(err)")
+//            XCTFail()
+//            }.disposed(by: bag)
+//        XCTAssert(wait() == nil)
+//    }
+    
+    func testPhoto() {
+        let exp = expectation(description: "photos")
+        
+        appManagers.rest.images(page: 1).subscribe(onSuccess: { (photos) in
+            defer { exp.fulfill() }
+            XCTAssert(!photos.pictures.isEmpty)
+        }) { (err) in
+            defer { exp.fulfill() }
+            Log.error("\(err)")
+            XCTFail()
+            }.disposed(by: bag)
+        XCTAssert(wait() == nil)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testDetails() {
+        let exp = expectation(description: "details")
+        
+        appManagers.rest.imageDetails(id: "b501a808c6fe71aef59c").subscribe(onSuccess: { (details) in
+            defer { exp.fulfill() }
+            Log.debug("\(details)")
+        }) { (err) in
+            defer { exp.fulfill() }
+            Log.error("\(err)")
+            XCTFail()
+            }.disposed(by: bag)
+        XCTAssert(wait() == nil)
     }
-
 }
