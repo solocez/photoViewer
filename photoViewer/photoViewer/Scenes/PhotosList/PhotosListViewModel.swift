@@ -21,7 +21,7 @@ final class PhotosListViewModel: BaseMVVMViewModel {
     struct Output {
         var itemsTotal: Int
         var reloadData: Driver<[Int]/*indexes of items*/>
-        var didSelectItem: Driver<Photo>
+        var didSelectItem: Driver<PhotoDetails>
     }
     
 
@@ -47,23 +47,23 @@ final class PhotosListViewModel: BaseMVVMViewModel {
             , itemSelected: itemSelectedSbj.asObserver())
         
         output = Output(itemsTotal: 0
-            , reloadData: setupFetchMovies()
-            , didSelectItem: setupMovieSelected())
+            , reloadData: setupFetchItems()
+            , didSelectItem: setupItemSelected())
     }
 }
 
 // Private
 extension PhotosListViewModel {
     //
-    private func setupMovieSelected() -> Driver<Photo> {
-        return itemSelectedSbj.asObservable().map { [unowned self] (index) in
-            //No bounds check - for non commercial use only
-            return self.storage[index]
-            }.asDriver(onErrorJustReturn: Photo.fake)
+    private func setupItemSelected() -> Driver<PhotoDetails> {
+        return itemSelectedSbj.asObservable().flatMap({ [unowned self] (index) -> Driver<PhotoDetails> in
+            let item = self.storage[index]
+            return self.appManagers.rest.imageDetails(id: item.id).asDriver(onErrorJustReturn: PhotoDetails.fake)
+        }).asDriver(onErrorJustReturn: PhotoDetails.fake)
     }
     
     //
-    private func setupFetchMovies() -> Driver<[Int]> {
+    private func setupFetchItems() -> Driver<[Int]> {
         let fetchRequired = fetchItemsSbj
             .asObservable()
             .filter({ (indexes) -> Bool in
@@ -81,7 +81,7 @@ extension PhotosListViewModel {
             })
         
         let fetchFromWebResultObs = fetchRequired.flatMap { [unowned self] _ -> Observable<Event<Photos>> in
-            // Fetch new portion of Movies
+            // Fetch new portion of Items
             return self.appManagers.rest.images(page: self.lastFetchedPage)
                 .asObservable()
                 .materialize()

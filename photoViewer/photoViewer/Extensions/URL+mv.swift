@@ -1,10 +1,5 @@
 //
 //  URL+mv.swift
-//  MoviesViewer
-//
-//  Created by Zakhar Sukhanov on 2019-04-10.
-//  Copyright © 2019 solocez. All rights reserved.
-//
 
 import Foundation
 

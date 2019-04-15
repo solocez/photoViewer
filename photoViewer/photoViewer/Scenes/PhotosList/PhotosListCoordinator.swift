@@ -25,26 +25,27 @@ class PhotosListCoordinator: BaseMVVMCoordinator<PhotosListCoordinatorResult> {
         let viewModel = PhotosListViewModel()
         viewController.viewModel = viewModel
 
-//        viewModel.output.didSelectMovie
-//            .asObservable()
-//            .subscribe(onNext: { [unowned self] (movie) in
-//                self.showMovieDetails(movie, nc: navigationController)
-//            }).disposed(by: bag)
+        viewModel.output.didSelectItem
+            .asObservable()
+            .subscribe(onNext: { [unowned self] (itemDetails) in
+                self.showItemDetails(itemDetails, nc: navigationController)
+            }).disposed(by: bag)
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         return Observable<CoordinationResult>.empty()
     }
+
     
-//    private func showMovieDetails(_ movie: Movie, nc: UINavigationController) {
-//        let movieCoordinator = MovieCoordinator(movie: movie, navigationViewController: nc)
-//        coordinate(to: movieCoordinator).subscribe(onNext: { (_) in
-//            //
-//        }, onError: { (err) in
-//            Log.error(err)
-//        }).disposed(by: bag)
-//    }
+    private func showItemDetails(_ itemDetails: PhotoDetails, nc: UINavigationController) {
+        let itemCoordinator = ItemCoordinator(item: itemDetails, navigationViewController: nc)
+        coordinate(to: itemCoordinator).subscribe(onNext: { (_) in
+            //
+        }, onError: { (err) in
+            Log.error(err)
+        }).disposed(by: bag)
+    }
 }
 
 
