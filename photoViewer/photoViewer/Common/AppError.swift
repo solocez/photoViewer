@@ -22,7 +22,7 @@ struct AppError: LocalizedError {
     
     //
     init(_ err: AFError) {
-        var codeResult = 54
+        var codeResult = 783 // just fake.
         if case .responseValidationFailed(let serverError) = err {
             if case .unacceptableStatusCode(let code) = serverError, 401 == code {
                 codeResult = code
