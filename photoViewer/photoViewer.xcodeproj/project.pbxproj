@@ -28,7 +28,7 @@
 		07EBE1A622647072001480F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE1A422647072001480F8 /* Settings.swift */; };
 		07EBE1AA22647086001480F8 /* Loc.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07EBE1A822647086001480F8 /* Loc.strings */; };
 		07EBE1AB22647086001480F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EBE1A922647086001480F8 /* LaunchScreen.storyboard */; };
-		07EBE1B6226470A4001480F8 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE1AE226470A4001480F8 /* PhotoCell.swift */; };
+		07EBE1B6226470A4001480F8 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE1AE226470A4001480F8 /* ItemCell.swift */; };
 		07EBE1B7226470A4001480F8 /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE1AF226470A4001480F8 /* PhotosListViewModel.swift */; };
 		07EBE1B8226470A4001480F8 /* PhotosListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE1B0226470A4001480F8 /* PhotosListCoordinator.swift */; };
 		07EBE1B9226470A4001480F8 /* PhotosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE1B1226470A4001480F8 /* PhotosListViewController.swift */; };
@@ -78,7 +78,7 @@
 		07EBE1A422647072001480F8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		07EBE1A822647086001480F8 /* Loc.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Loc.strings; sourceTree = "<group>"; };
 		07EBE1A922647086001480F8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		07EBE1AE226470A4001480F8 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		07EBE1AE226470A4001480F8 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		07EBE1AF226470A4001480F8 /* PhotosListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
 		07EBE1B0226470A4001480F8 /* PhotosListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosListCoordinator.swift; sourceTree = "<group>"; };
 		07EBE1B1226470A4001480F8 /* PhotosListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosListViewController.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				07EBE1B0226470A4001480F8 /* PhotosListCoordinator.swift */,
-				07EBE1AE226470A4001480F8 /* PhotoCell.swift */,
+				07EBE1AE226470A4001480F8 /* ItemCell.swift */,
 				07EBE1B1226470A4001480F8 /* PhotosListViewController.swift */,
 				07EBE1AF226470A4001480F8 /* PhotosListViewModel.swift */,
 			);
@@ -502,7 +502,7 @@
 			files = (
 				07EBE1C3226470C7001480F8 /* RESTManager.swift in Sources */,
 				07EBE14E226468A1001480F8 /* AppCoordinator.swift in Sources */,
-				07EBE1B6226470A4001480F8 /* PhotoCell.swift in Sources */,
+				07EBE1B6226470A4001480F8 /* ItemCell.swift in Sources */,
 				07EBE166226468AC001480F8 /* AppError.swift in Sources */,
 				07EBE1B8226470A4001480F8 /* PhotosListCoordinator.swift in Sources */,
 				07EBE1A522647072001480F8 /* BaseSettings.swift in Sources */,

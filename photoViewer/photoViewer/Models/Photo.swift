@@ -33,6 +33,9 @@ struct Photo: Decodable {
 }
 
 struct PhotoDetails: Decodable {
+    
+    public static let fake = PhotoDetails(id: "", author: "", camera: "", cropped_picture: "", full_picture: "")
+    
     let id: String
     let author: String
     let camera: String
@@ -52,12 +55,11 @@ struct PhotoDetails: Decodable {
 extension Photo {
     //
     func posterURL() -> URL? {
-//        guard let url = URL(string: Settings().PosterEndpoint + posterPath) else {
-//            Log.error("FAILED CREATING POSTER URL")
-//            return nil
-//        }
-//
-//        return url
-        return nil
+        guard let url = URL(string: croppedPicture) else {
+            Log.error("FAILED CREATING POSTER URL")
+            return nil
+        }
+
+        return url
     }
 }

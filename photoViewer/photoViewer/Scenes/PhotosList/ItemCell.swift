@@ -1,14 +1,14 @@
 //
-//  PhotoCell.swift
+//  ItemCell.swift
 
 import UIKit
 
-final class PhotoCell: UICollectionViewCell {
+final class ItemCell: UICollectionViewCell {
     
-    public static let kMovieCellID = "MovieCellID"
+    public static let kItemCellID = "ItemCellID"
     
     private var indicatorView: UIActivityIndicatorView!
-    var posterImage: UIImageView!
+    var itemImage: UIImageView!
     
     //
     override init(frame: CGRect) {
@@ -25,25 +25,25 @@ final class PhotoCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        setup(movie: nil)
+        setup(item: nil)
     }
     
     //
-    public func setup(movie: Photo?) {
-        if nil == movie {
-            posterImage.isHidden = true
+    public func setup(item: Photo?) {
+        if nil == item {
+            itemImage.isHidden = true
             indicatorView.startAnimating()
         } else {
             indicatorView.stopAnimating()
-            posterImage.isHidden = false
+            itemImage.isHidden = false
         }
     }
     
     //
     private func setupPosterImage() {
-        posterImage = UIImageView(image: nil)
-        addSubview(posterImage)
-        posterImage.snp.makeConstraints { (make) in
+        itemImage = UIImageView(image: nil)
+        addSubview(itemImage)
+        itemImage.snp.makeConstraints { (make) in
             make.leading.trailing.top.bottom.equalToSuperview()
         }
     }

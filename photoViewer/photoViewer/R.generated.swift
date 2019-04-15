@@ -5,6 +5,7 @@
 
 import Foundation
 import Rswift
+import UIKit
 
 /// This `R` struct is generated and contains references to static resources.
 struct R: Rswift.Validatable {
@@ -13,6 +14,19 @@ struct R: Rswift.Validatable {
   
   static func validate() throws {
     try intern.validate()
+  }
+  
+  /// This `R.image` struct is generated, and contains static references to 1 images.
+  struct image {
+    /// Image `posterPlaceholder`.
+    static let posterPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "posterPlaceholder")
+    
+    /// `UIImage(named: "posterPlaceholder", bundle: ..., traitCollection: ...)`
+    static func posterPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.posterPlaceholder, compatibleWith: traitCollection)
+    }
+    
+    fileprivate init() {}
   }
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
